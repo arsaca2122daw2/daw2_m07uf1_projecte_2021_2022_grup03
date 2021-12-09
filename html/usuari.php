@@ -1,3 +1,8 @@
+<?php
+    $nombre = $_POST['usuari'];
+    $password =$_POST['contrassenya'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuari</title>
-    <link rel="stylesheet" type="text/css" href="/css/estilsUsuari.css"> 
+    <link rel="stylesheet" type="text/css" href="../css/estilsUsuari.php">
 
 </head>
 <body>
@@ -14,15 +19,17 @@
         <hr>
     </div>
     <div class="dadesUsuari">
-        <h4>Usuari: </h4><h4 id="UsuariObert"></h4>
-        <h4>Vosté és: </h4><h4 id="funcio"></h4>
-        <p id="codiUsuari"></p>
-        <h4>Codi Sessió: </h4><h4> </h4>
+        Usuari:<input id="UsuariObert" value="<?php echo $nombre;?>">
+        <br><br>
+        Vosté és:<input id="funcio" value="<?php echo $password;?>">
+        <br><br>
+        Codi Sessió:<input id="funcio" value="<?php echo $password;?>">
         <input id="tancaSessio" type="submit" value="Log Out"></input>
     </div>
-    <div>
+    <div class="links">
         <a href="visualitzacioLlibres.html">Veure tots el Llibres</a><br><br>
         <a href="visualitzacioDadesUsuari.html">Veure les teves dades personals</a>
     </div>
 </body>
 </html>
+
