@@ -1,11 +1,16 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualitzacio Dades Usuari</title>
-    <link rel="stylesheet" type="text/css" href="/css/estilsVisualitzacioLlibres.css"> 
+    <title>Bibliotecari Cap</title>
+    <link rel="stylesheet" type="text/css" href="/css/estilsBibliotecariCap.php"> 
+
 </head>
 <body>
     <div>
@@ -19,9 +24,10 @@
         <h4>Codi Sessió: </h4><h4> </h4>
         <input id="tancaSessio" type="submit" value="Log Out"></input>
     </div>
-    <div class="dadesLlibres">
-        Títol del llibre: <div></div>
-        Prestat: <div></div>
+    <div>
+        <a href="einesLlibres.html">Eines de Llibres</a><br><br>
+        <a href="einesUsuaris.html">Eines d' Usuaris</a><br><br>
+        <a href="einesBibliotecaris.html">Eines de Bibliotecaris</a>
     </div>
 </body>
 </html>

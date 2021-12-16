@@ -1,4 +1,10 @@
-.dadesUsuari{
+<?php
+
+    header("Content-Type: text/css; charset: UTF-8");
+
+?>
+
+.dadesUsuari1{
     margin-left: 80%;
     border: 1px solid black;
     width: 325px;
@@ -7,13 +13,13 @@
     
 }
 
-.dadesLlibres{
+.dadesUsuari2{
     
     width: 500px;
     margin-left: 25px;
     text-align: left;
 }
 
-.dadesLlibres div{
+.dadesUsuari2 div{
     margin-bottom: 10px;
 }

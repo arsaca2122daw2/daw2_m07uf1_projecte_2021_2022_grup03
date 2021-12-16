@@ -1,6 +1,5 @@
 <?php
-    $nombre = $_POST['usuari'];
-    $password =$_POST['contrassenya'];
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -19,11 +18,11 @@
         <hr>
     </div>
     <div class="dadesUsuari">
-        Usuari:<input id="UsuariObert" value="<?php echo $nombre;?>">
+        Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nombre'];?>">
         <br><br>
-        Vosté és:<input id="funcio" value="<?php echo $password;?>">
+        Vosté és:<input id="funcio" value="<?php echo "Usuari"?>">
         <br><br>
-        Codi Sessió:<input id="funcio" value="<?php echo $password;?>">
+        Codi Sessió:<input id="funcio" value="<?php echo session_id();?>">
         <input id="tancaSessio" type="submit" value="Log Out"></input>
     </div>
     <div class="links">

@@ -1,3 +1,9 @@
+<?php
+
+    header("Content-Type: text/css; charset: UTF-8");
+
+?>
+
 .mainAvis{
     color: red;
     width: 240px;

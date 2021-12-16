@@ -1,3 +1,9 @@
+<?php
+
+    header("Content-Type: text/css; charset: UTF-8");
+
+?>
+
 .dadesUsuari{
     margin-left: 80%;
     border: 1px solid black;
@@ -14,6 +20,6 @@
     text-align: left;
 }
 
-.dadesLlibresdadesUsuari2 div{
+.dadesLlibres div{
     margin-bottom: 10px;
 }

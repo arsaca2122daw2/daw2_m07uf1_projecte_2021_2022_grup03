@@ -1,3 +1,9 @@
+<?php
+
+    header("Content-Type: text/css; charset: UTF-8");
+
+?>
+
 .dadesUsuari{
     margin-left: 80%;
     border: 1px solid black;
