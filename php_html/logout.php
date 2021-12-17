@@ -1,3 +1,11 @@
+<?php
+
+session_unset();
+session_destroy();
+
+header("refresh:5;url=login.php");
+?>
+
 <!DOCTYPE html>
 <html lang="cat">
 <head>
@@ -11,13 +19,11 @@
         <h1 style="text-align: center;">Biblioteca Terra Alta</h1>
         <hr>
     </div>
-    <div class="mainIndex" >
-        <h3>Inicia Sessió</h3>
-        <form action="https://localhost/php/sessions.php" method="POST">
-        Usuari: <input type="text" name="usuari"> 
-        Contrassenya: <input type="password" name="contrassenya">
-        <input type="submit" value="Log In"></input>
-    </form>
+    <div class="mainLogOut" >
+        <h1>Vosté a tancat sessió</h1>
+        <h2>Redireccionant a l'inici, esperi...</h2>
+        <br><br>
+        <a href="login.html"><h3>Si no es redirecciona feu click aquí</h3></a>
     </div>
 </body>
 </html>

@@ -20,6 +20,7 @@ if ($fp) {
 
     if (($_POST['usuari'] == $logpwd[0]) && ($_POST['contrassenya'] == $logpwd[1]) && ($usuari1 == $logpwd[2])){
         fclose($fitxer);
+        session_unset();
         session_start();
         $_SSESSION['nom'] = $_POST['usuari'];
         $_SSESSION['rol'] = "Usuari";
@@ -31,6 +32,7 @@ if ($fp) {
 
     if (($_POST['usuari'] == $logpwd[0]) && ($_POST['contrassenya'] == $logpwd[1]) && ($usuari2 == $logpwd[2])){
         fclose($fitxer);
+        session_unset();
         session_start();
         $_SSESSION['nom'] = $_POST['usuari'];
         $_SSESSION['rol'] = "Bibliotecari";
@@ -42,6 +44,7 @@ if ($fp) {
 
     if (($_POST['usuari'] == $logpwd[0]) && ($_POST['contrassenya'] == $logpwd[1]) && ($usuari3 == $logpwd[2])){
         fclose($fitxer);
+        session_unset();
         session_start();
         $_SSESSION['nom'] = $_POST['usuari'];
         $_SSESSION['rol'] = "Bibliotecari Cap";

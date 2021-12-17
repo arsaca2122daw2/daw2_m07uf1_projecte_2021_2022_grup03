@@ -1,5 +1,18 @@
 <?php
     session_start();
+
+    if(isset($_SESSION['rol'])){
+        if($_SESSION['rol'] == "Usuari"){
+            header('Location: usuari.php');
+        } else if($_SESSION['rol'] == "Bibliotecari"){
+            header('Location: bibliotecari.php');
+        }else if($_SESSION['rol'] == "Bibliotecari Cap"){
+            header('Location: bibliotecariCap.php');
+        }else{
+            session_destroy();
+            header('Location: login.php');
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -18,11 +31,12 @@
         <hr>
     </div>
     <div class="dadesUsuari">
-        <h4>Usuari: </h4><h4 id="UsuariObert"></h4>
-        <h4>Vosté és: </h4><h4 id="funcio"></h4>
-        <p id="codiUsuari"></p>
-        <h4>Codi Sessió: </h4><h4> </h4>
-        <input id="tancaSessio" type="submit" value="Log Out"></input>
+    Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom'];?>">
+        <br><br>
+        Vosté és:<input id="funcio" value="<?php echo "Bibliotecari Cap"?>">
+        <br><br>
+        Codi Sessió:<input id="funcio" value="<?php echo session_id();?>">
+        <input id="tancaSessio" type="submit" value="Log Out" onclick="location='logout.php'"/>
     </div>
     <div>
         <a href="einesLlibres.html">Eines de Llibres</a><br><br>

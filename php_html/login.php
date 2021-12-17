@@ -1,3 +1,19 @@
+<?php
+
+session_start();
+if(isset($_SESSION['rol'])){
+    if($_SESSION['rol'] == "Usuari"){
+        header('Location: usuari.php');
+    } else if($_SESSION['rol'] == "Bibliotecari"){
+        header('Location: bibliotecari.php');
+    }else if($_SESSION['rol'] == "Bibliotecari Cap"){
+        header('Location: bibliotecariCap.php');
+    }else{
+        header('Location: login.html');
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="cat">
 <head>
