@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualitzacio Dades Usuari</title>
-    <link rel="stylesheet" type="text/css" href="/css/estilsVisualitzacioDadesUsuari.css"> 
+    <link rel="stylesheet" type="text/css" href="css/estilsVisualitzacioDadesBibliotecariCap.php"> 
 </head>
 <body>
     <div>
@@ -13,11 +13,12 @@
         <hr>
     </div>
     <div class="dadesUsuari1">
-        <h4>Usuari: </h4><h4 id="UsuariObert"></h4>
-        <h4>Vosté és: </h4><h4 id="funcio"></h4>
-        <p id="codiUsuari"></p>
-        <h4>Codi Sessió: </h4><h4> </h4>
-        <input id="tancaSessio" type="submit" value="Log Out"></input>
+    Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom'];?>">
+        <br><br>
+        Vosté és:<input id="funcio" value="<?php echo "Bibliotecari Cap"?>">
+        <br><br>
+        Codi Sessió:<input id="funcio" value="<?php echo session_id();?>">
+        <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../inicio/logout.php'"/>
     </div>
     <div class="dadesUsuari2">
         <table>

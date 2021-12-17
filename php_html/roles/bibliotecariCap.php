@@ -1,18 +1,6 @@
 <?php
     session_start();
 
-    if(isset($_SESSION['rol'])){
-        if($_SESSION['rol'] == "Usuari"){
-            header('Location: usuari.php');
-        } else if($_SESSION['rol'] == "Bibliotecari"){
-            header('Location: bibliotecari.php');
-        }else if($_SESSION['rol'] == "Bibliotecari Cap"){
-            header('Location: bibliotecariCap.php');
-        }else{
-            session_destroy();
-            header('Location: login.php');
-        }
-    }
 ?>
 
 <!DOCTYPE html>
