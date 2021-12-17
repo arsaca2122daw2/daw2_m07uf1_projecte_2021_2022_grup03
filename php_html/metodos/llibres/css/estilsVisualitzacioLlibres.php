@@ -26,7 +26,7 @@ input{
     box-shadow: 2px 2px darkgrey;
 }
 
-#tancaSessio:hover{
+#tancaSessio:active{
     box-shadow: 0px 0px darkgrey;
 }
 
@@ -34,7 +34,13 @@ a{
     margin-left: 25px;
 }
 
-.links{
-    margin-top:50px;
-    padding-top:10px;
+.dadesLlibres{
+    
+    width: 500px;
+    margin-left: 25px;
+    text-align: left;
+}
+
+.dadesLlibresdadesUsuari2 div{
+    margin-bottom: 10px;
 }

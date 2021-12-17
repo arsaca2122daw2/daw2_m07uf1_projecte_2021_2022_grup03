@@ -3,12 +3,12 @@
 $usuari1 = "usuari";
 $usuari2 = "bibliotecari";
 $usuari3 = "bibliotecariCap";
-$url1 = "usuari.php";
-$url2 = "bibliotecari.php";
-$url3 = "bibliotecariCap.php";
+$url1 = "../roles/usuari.php";
+$url2 = "../roles/bibliotecari.php";
+$url3 = "../roles/bibliotecariCap.php";
 $url4 = "aviso.html";
 
-$fitxer_usuaris="usuaris";
+$fitxer_usuaris="../datos/usuaris";
 $fp=fopen($fitxer_usuaris,"r") or die ("No s'ha pogut validar l'usuari");
 
 if ($fp) {

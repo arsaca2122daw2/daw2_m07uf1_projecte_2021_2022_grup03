@@ -22,7 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bibliotecari Cap</title>
-    <link rel="stylesheet" type="text/css" href="/css/estilsBibliotecariCap.php"> 
+    <link rel="stylesheet" type="text/css" href="css/estilsBibliotecariCap.php"> 
 
 </head>
 <body>
@@ -36,12 +36,13 @@
         Vosté és:<input id="funcio" value="<?php echo "Bibliotecari Cap"?>">
         <br><br>
         Codi Sessió:<input id="funcio" value="<?php echo session_id();?>">
-        <input id="tancaSessio" type="submit" value="Log Out" onclick="location='logout.php'"/>
+        <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../inicio/logout.php'"/>
     </div>
-    <div>
-        <a href="einesLlibres.html">Eines de Llibres</a><br><br>
-        <a href="einesUsuaris.html">Eines d' Usuaris</a><br><br>
-        <a href="einesBibliotecaris.html">Eines de Bibliotecaris</a>
+    <div class="links"> 
+        <a href="../eines/einesLlibres.php">Eines de Llibres</a><br><br>
+        <a href="../eines/einesUsuaris.php">Eines d' Usuaris</a><br><br>
+        <a href="../eines/einesBibliotecaris.php">Eines de Bibliotecaris</a><br><br>
+        <a href="../metodos/bibliotecariCap/visualitzacioDadesBibliotecariCap.php">Veure les teves dades personals</a>
     </div>
 </body>
 </html>

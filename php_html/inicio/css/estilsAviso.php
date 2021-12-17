@@ -13,4 +13,9 @@
     border-radius: 20px;
     margin: auto;
     margin-top: 250px
+
+}
+
+h2{
+    text-align:center;
 }
