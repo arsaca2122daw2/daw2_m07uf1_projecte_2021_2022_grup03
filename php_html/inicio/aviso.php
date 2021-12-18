@@ -1,3 +1,9 @@
+<?php
+
+header("refresh:10;url=login.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="cat">
 <head>

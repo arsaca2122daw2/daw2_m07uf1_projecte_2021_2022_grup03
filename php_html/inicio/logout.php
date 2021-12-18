@@ -5,7 +5,7 @@ $cookie_sessio = session_get_cookie_params();
 setcookie(session_name(), '', time() - 86400, $cookie_sessio['path'], $cookie_sessio['domain'], $cookie_sessio['secure'], $cookie_sessio['httponly']);
 session_destroy();
 
-header("refresh:3;url=login.php");
+header("refresh:10;url=login.php");
 
 ?>
 

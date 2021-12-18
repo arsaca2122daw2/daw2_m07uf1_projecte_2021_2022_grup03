@@ -15,34 +15,55 @@
         <hr>
     </div>
     <div class="dadesUsuari">
-        Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom'];?>">
+        Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom']; ?>">
         <br><br>
-        Vosté és:<input id="funcio" value="<?php echo "Bibliotecari"?>">
+        Vosté és:<input id="funcio" value="<?php echo "Bibliotecari" ?>">
         <br><br>
-        Codi Sessió:<input id="funcio" value="<?php echo session_id();?>">
-        <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../../inicio/logout.php'"/>
+        Codi Sessió:<input id="funcio" value="<?php echo session_id(); ?>">
+        <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../../inicio/logout.php'" />
     </div>
     </div>
     <table>
         <tr>
-            <td></td>
-            <td></td>
+            <td>Títol</td>
+            <td>Autor</td>
+            <td>ISBN</td>
+            <td>Llibre en Préstec</td>
+            <td>Inici del préstec</td>
+            <td>Codi Usuari amb el préstec</td>
+
         </tr>
         <?php
 
-        /*for que lea todo el archivo {
+        $fitxer_llibres = "../../datos/llibres";
+        $fp = fopen($fitxer_llibres, "r") or die("No s'han pogut validar els llibres");
 
-        echo html 
-            table
-                tr 
-                    td titulo
-                    td prestado
-                  tr 
-            table
-    }
-    */
+        if ($fp) {
+            $mida_fitxer = filesize($fitxer_llibres);
+            $llibres = explode(PHP_EOL, fread($fp, $mida_fitxer));
+
+
+
+            foreach ($llibres as $llibre) {
+                $logpwd = explode(":", $llibre);
+
+                echo "";
+
+                echo "<tr>";
+                echo "<td> $logpwd[0] </td>";
+                echo "<td> $logpwd[1] </td>";
+                echo "<td> $logpwd[2] </td>";
+                echo "<td> $logpwd[3] </td>";
+                echo "<td> $logpwd[4] </td>";
+                echo "<td> $logpwd[5] </td>";
+                echo "</tr>";
+            }
+        }
+
+        fclose($fitxer);
 
         ?>
+    </table>
 </body>
 
 </html>
