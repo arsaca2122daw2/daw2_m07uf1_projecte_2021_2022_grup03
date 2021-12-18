@@ -16,7 +16,7 @@
         <hr>
     </div>
     <div>
-        <a href="../../roles/bibliotecari.php"><input  type="button" Value="<-- Enrere"/></a><br><br>
+        <a href="../../../eines/einesLlibresBC.php"><input  type="button" Value="<-- Enrere"/></a><br><br>
     </div>
     <div class="dadesUsuari">
         Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom']; ?>">
@@ -36,7 +36,7 @@
 
     <?php
 
-    $fitxer_llibre = "../../datos/llibres";
+    $fitxer_llibre = "../../../datos/llibres";
     $fp = fopen($fitxer_llibre, "r") or die("No s'ha pogut validar l'usuari");
 
     if ($fp) {

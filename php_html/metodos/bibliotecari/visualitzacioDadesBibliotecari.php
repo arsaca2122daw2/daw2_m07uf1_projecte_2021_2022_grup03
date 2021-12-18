@@ -45,6 +45,9 @@ if ($fp) {
         <h1 style="text-align: center;">Biblioteca Terra Alta</h1>
         <hr>
     </div>
+    <div>
+        <a href="../../roles/bibliotecari.php"><input  type="button" Value="<-- Enrere"/></a><br><br>
+    </div>
     <div class="dadesUsuari1">
         Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom'];?>">
         <br><br>
@@ -92,7 +95,7 @@ if ($fp) {
                 <td> <?php echo $vuit ?> </td>
             </tr>
             <tr>
-                <td>Bibliotecari cap?:</td>
+                <td>Bibliotecari Cap:</td>
                 <td> <?php echo $nou ?> </td>
             </tr>
         </table>

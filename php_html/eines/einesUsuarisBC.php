@@ -11,6 +11,7 @@
 <body>
     <div>
         <h1 style="text-align: center;">Biblioteca Terra Alta</h1>
+        
         <hr>
     </div>
     <div>
@@ -24,12 +25,11 @@
         Codi Sessió:<input id="funcio" value="<?php echo session_id();?>">
         <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../inicio/logout.php'"/>
     </div>
-
     <div>
-        <a href="../metodos/bibliotecari/crearBibliotecari.php">Crear Bibliotecari</a><br><br>
-        <a href="../metodos/bibliotecari/veureBibliotecari.php">Visualitzar Bibliotecari</a><br><br>
-        <a href="../metodos/bibliotecari/modificarBibliotecari.php">Modificar Bibliotecari</a><br><br>
-        <a href="../metodos/bibliotecari/eliminarBibliotecari.php">Eliminació Bibliotecari</a>
+        <a href="../metodos/bibliotecariCap/usuari/crearUsuari.php">Crear Usuari</a><br><br>
+        <a href="../metodos/bibliotecariCap/usuari/veureUsuari.php">Visualitzar Usuari</a><br><br>
+        <a href="../metodos/bibliotecariCap/usuari/modificarUsuari.php">Modificar Usuari</a><br><br>
+        <a href="../metodos/bibliotecariCap/usuari/eliminarUsuari.php">Eliminació Usuari</a>
     </div>
 </body>
 </html>

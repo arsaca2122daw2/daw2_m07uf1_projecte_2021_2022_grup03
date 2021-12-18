@@ -27,8 +27,8 @@
         <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../inicio/logout.php'"/>
     </div>
     <div class="links"> 
-        <a href="../eines/einesLlibres.php">Eines de Llibres</a><br><br>
-        <a href="../eines/einesUsuaris.php">Eines d' Usuaris</a><br><br>
+        <a href="../eines/einesLlibresBC.php">Eines de Llibres</a><br><br>
+        <a href="../eines/einesUsuarisBC.php">Eines d' Usuaris</a><br><br>
         <a href="../eines/einesBibliotecaris.php">Eines de Bibliotecaris</a><br><br>
         <a href="../metodos/bibliotecariCap/visualitzacioDadesBibliotecariCap.php">Veure les teves dades personals</a>
     </div>

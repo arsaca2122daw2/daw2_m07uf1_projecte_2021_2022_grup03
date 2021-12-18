@@ -14,7 +14,7 @@
     
 }
 
-input{
+.dadesUsuari input{
     float:right;
 
     border:none;

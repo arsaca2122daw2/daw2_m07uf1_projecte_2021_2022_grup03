@@ -45,6 +45,9 @@ if ($fp) {
         <h1 style="text-align: center;">Biblioteca Terra Alta</h1>
         <hr>
     </div>
+    <div>
+        <a href="../../roles/bibliotecariCap.php"><input  type="button" Value="<-- Enrere"/></a><br><br>
+    </div>
     <div class="dadesUsuari1">
         Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom'];?>">
         <br><br>

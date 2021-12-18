@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualitzacio Llibres</title>
-    <link rel="stylesheet" type="text/css" href="css/estilsVeureLlibre.php">
+    <title>Visualitzacio Usuari</title>
+    <link rel="stylesheet" type="text/css" href="css/estilsVeureUsuari.php">
 
 </head>
 
@@ -16,7 +16,7 @@
         <hr>
     </div>
     <div>
-        <a href="../../roles/bibliotecari.php"><input  type="button" Value="<-- Enrere"/></a><br><br>
+        <a href="../../../eines/einesUsuarisBC.php"><input  type="button" Value="<-- Enrere"/></a><br><br>
     </div>
     <div class="dadesUsuari">
         Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom']; ?>">
@@ -27,26 +27,26 @@
         <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../../inicio/logout.php'" />
     </div>
     <div>
-        <form action="veureLlibre.php" method="POST">
-            Introdueix l'ISBN del llibre a cercar:
-            <input type="text" name="ISBN">
+        <form action="veureUsuari.php" method="POST">
+            Introdueix el codi d'usuari a Cercar:
+            <input type="text" name="codiUsuari">
             <input type="submit" value="Cercar"></input><br><br><br>
         </form>
     </div>
 
     <?php
 
-    $fitxer_llibre = "../../datos/llibres";
-    $fp = fopen($fitxer_llibre, "r") or die("No s'ha pogut validar l'usuari");
+    $fitxer_usuari = "../../../datos/usuarisdades";
+    $fp = fopen($fitxer_usuari, "r") or die("No s'ha pogut validar l'usuari");
 
     if ($fp) {
-        $mida_fitxer = filesize($fitxer_llibre);
-        $llibres = explode(PHP_EOL, fread($fp, $mida_fitxer));
+        $mida_fitxer = filesize($fitxer_usuari);
+        $usuaris = explode(PHP_EOL, fread($fp, $mida_fitxer));
 
-        foreach ($llibres as $llibre) {
-            $logpwd = explode(":", $llibre);
+        foreach ($usuaris as $usuari) {
+            $logpwd = explode(":", $usuari);
 
-            if ($logpwd[2] == $_POST['ISBN']) { //CONDICION CON LA COOKIE COGER EL ID DEL USUARIO;
+            if (($logpwd[4] == $_POST['codiUsuari']) && ($logpwd[9] == 'usuari')){ //CONDICION CON LA COOKIE COGER EL ID DEL USUARIO;
 
                 $zero = $logpwd[0];
                 $u = $logpwd[1];
@@ -54,36 +54,56 @@
                 $tres = $logpwd[3];
                 $quatre = $logpwd[4];
                 $cinc = $logpwd[5];
+                $sis = $logpwd[6];
+                $set = $logpwd[7];
+                $vuit = $logpwd[8];
+
                 echo "<table>";
                 echo "<tr>";
-                echo "<td>Títol del llibre:</td>";
+                echo "<td>Nom I Cognoms:</td>";
                 echo "<td> $zero </td>";
                 echo "</tr>";
                 echo "<tr>";
-                echo "<td>Autor del llibre:</td>";
+                echo "<td>Adreça física::</td>";
                 echo "<td> $u </td>";
                 echo "</tr>";
                 echo "<tr>";
-                echo "<td>ISBN del llibre:</td>";
+                echo "<td>Correu Electrònic:</td>";
                 echo "<td> $dos </td>";
                 echo "</tr>";
                 echo "<tr>";
-                echo "<td>Estat del llibre:</td>";
+                echo "<td>Tèlefon:</td>";
                 echo "<td> $tres </td>";
                 echo "</tr>";
                 echo "<tr>";
-                echo "<td>Inici del prèstec:</td>";
+                echo "<td>ID:</td>";
                 echo "<td> $quatre </td>";
                 echo "</tr>";
                 echo "<tr>";
-                echo "<td>ID de l'usuari amb el llibre prestat: </td>";
+                echo "<td>Contrassenya:</td>";
                 echo "<td> $cinc </td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<td>Llibre en prèstec:</td>";
+                echo "<td> $sis </td>";
+                echo "<tr>";
+                echo "<tr>";
+                echo "<td>Inici del prèstec:</td>";
+                echo "<td> $set </td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<td>ISBN del llibre en prèstec:</td>";
+                echo "<td> $vuit </td>";
                 echo "</tr>";
                 echo "</table>";
 
                 fclose($fitxer);
                 break;
+            }else{
+
             }
+        
+            
         }
     }
     ?>

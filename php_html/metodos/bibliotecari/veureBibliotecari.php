@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cat">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualitzacio Usuari</title>
-    <link rel="stylesheet" type="text/css" href="css/estilsVeureUsuari.php">
+    <link rel="stylesheet" type="text/css" href="css/estilsVeureBibliotecari.php">
 
 </head>
 
@@ -16,7 +16,7 @@
         <hr>
     </div>
     <div>
-        <a href="../../eines/einesUsuaris.php"><input  type="button" Value="<-- Enrere"/></a><br><br>
+        <a href="../../eines/einesBibliotecaris.php"><input  type="button" Value="<-- Enrere"/></a><br><br>
     </div>
     <div class="dadesUsuari">
         Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom']; ?>">
@@ -27,9 +27,9 @@
         <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../../inicio/logout.php'" />
     </div>
     <div>
-        <form action="veureUsuari.php" method="POST">
-            Introdueix el codi d'usuari a Cercar:
-            <input type="text" name="codiUsuari">
+        <form action="veureBibliotecari.php" method="POST">
+            Introdueix el codi del bibliotecari a Cercar:
+            <input type="text" name="codiBiblio">
             <input type="submit" value="Cercar"></input><br><br><br>
         </form>
     </div>
@@ -37,17 +37,18 @@
     <?php
 
     $fitxer_usuari = "../../datos/usuarisdades";
-    $fp = fopen($fitxer_usuari, "r") or die("No s'ha pogut validar l'usuari");
+    $fp = fopen($fitxer_usuari, "r") or die("No s'ha pogut validar el bibliotecari");
 
     if ($fp) {
+        
         $mida_fitxer = filesize($fitxer_usuari);
         $usuaris = explode(PHP_EOL, fread($fp, $mida_fitxer));
 
         foreach ($usuaris as $usuari) {
             $logpwd = explode(":", $usuari);
 
-            if (($logpwd[4] == $_POST['codiUsuari']) && ($logpwd[9] == 'usuari')){ //CONDICION CON LA COOKIE COGER EL ID DEL USUARIO;
-
+            if (($logpwd[4] == $_POST['codiBiblio']) && ($logpwd[11] == 'bibliotecari')){
+                
                 $zero = $logpwd[0];
                 $u = $logpwd[1];
                 $dos = $logpwd[2];
@@ -57,6 +58,7 @@
                 $sis = $logpwd[6];
                 $set = $logpwd[7];
                 $vuit = $logpwd[8];
+                $nou = $logpwd[9];
 
                 echo "<table>";
                 echo "<tr>";
@@ -84,26 +86,26 @@
                 echo "<td> $cinc </td>";
                 echo "</tr>";
                 echo "<tr>";
-                echo "<td>Llibre en prèstec:</td>";
+                echo "<td>Número seguretat social:</td>";
                 echo "<td> $sis </td>";
+                echo "</tr>";
                 echo "<tr>";
-                echo "<tr>";
-                echo "<td>Inici del prèstec:</td>";
+                echo "<td>Inici del treball:</td>";
                 echo "<td> $set </td>";
                 echo "</tr>";
                 echo "<tr>";
-                echo "<td>ISBN del llibre en prèstec:</td>";
+                echo "<td>Salari:</td>";
                 echo "<td> $vuit </td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<td>Bibliotecari Cap:</td>";
+                echo "<td> $nou </td>";
                 echo "</tr>";
                 echo "</table>";
 
                 fclose($fitxer);
                 break;
-            }else{
-
             }
-        
-            
         }
     }
     ?>
