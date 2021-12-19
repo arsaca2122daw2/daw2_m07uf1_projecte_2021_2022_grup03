@@ -1,6 +1,6 @@
 <?php 
-
-    class BibliotecariCap extends Persona{
+    include_once "Persona.php";
+    class Bibliotecari extends Persona{
 
         private $idBiblotecari;
         private $numSS;
@@ -23,6 +23,47 @@
     
         }
 
+        public function setnom($nom){
+            $this->nom=$nom;
+        }
+        
+        public function getnom(){
+            return $this->nom;
+        }
+
+        public function setcognom($cognom){
+            $this->cognom=$cognom;
+        }
+        
+        public function getcognom(){
+            return $this->cognom;
+        }
+
+        public function setadrecaElec($adrecaElec){
+            $this->adrecaElec=$adrecaElec;
+        }
+        
+        public function getadrecaElec(){
+            return $this->adrecaElec;
+
+
+        }
+        public function settel($tel){
+            $this->tel=$tel;
+        }
+        
+        public function gettel(){
+            return $this->tel;
+        }
+        
+        public function setcontrasenya($contrasenya){
+            $this->contrasenya=$contrasenya;
+        }
+        
+        public function getcontrasenya(){
+            return $this->contrasenya;
+        }
+        
         public function setidBiblotecari($idBiblotecari){
             $this->idBiblotecari=$idBiblotecari;
         }
@@ -62,6 +103,13 @@
 
         //metodes pagina
             //llibres
+        public function __toString(){
+            return "<b>Llibre creat</b> <br>" . "Nom: ". $this->nom . "<br> Cognom: " . $this->cognom . "<br> Adreça Electrònica: " . $this->adrecaElec .
+            "<br> Telèfon: " . $this->tel . "<br> Contrassenya: " . $this->contrasenya . 
+            "<br> ID del bibliotecari: " . $this->idBiblotecari . "<br> Número Seguretat Social: " . $this->numSS . 
+            "<br> Data Inici del Treball: " . $this->dataIniciTreball . "<br> Salari: " . 
+            $this->salari . "<br> Cap: " . $this->cap;
+        }
 
         public function crearLlibre(){
 

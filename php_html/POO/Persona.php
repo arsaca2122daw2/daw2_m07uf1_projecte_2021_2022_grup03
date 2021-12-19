@@ -1,5 +1,4 @@
 <?php 
-
     abstract class Persona{
         protected $nom;
         protected $cognom;

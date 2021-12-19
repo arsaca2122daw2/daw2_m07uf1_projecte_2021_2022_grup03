@@ -1,4 +1,5 @@
 <?php
+session_start();
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
@@ -15,7 +16,6 @@ include_once "../../POO/Usuari.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualitzacio Llibres</title>
     <link rel="stylesheet" type="text/css" href="css/estilsVeureUsuari.php">
-
 </head>
 
 <body>
@@ -58,7 +58,7 @@ include_once "../../POO/Usuari.php";
         $specialChars = preg_match('@[^\w]@', $password);
 
         if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
-            echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
+            echo 'La contrasenya no es bastant segura, recorda que has de tenir mínim 1 majśucula, 1 minúscula, 1 número i 1 caràcter especial.';
         } else {
             $nouUsuari = new Usuari($_POST['nom'], $_POST['cognom'], $_POST['adrecaElec'], $_POST['tel'], $_POST['contrasenya'], $_POST['idUsuari'], $_POST['llibrePrestec'], $_POST['dataIniciPrestec'], $_POST['isbnPrestec']);
 

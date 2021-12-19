@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $fitxer_usuarisdades = "../../datos/usuarisdades";
 $fp = fopen($fitxer_usuarisdades, "r") or die("No s'ha pogut validar l'usuari");
