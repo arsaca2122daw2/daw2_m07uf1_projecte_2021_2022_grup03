@@ -1,5 +1,7 @@
 <?php
-	//
+    session_start();
+
+
     // Mètodes de Dompdf --> https://gennco.com.co/ANT/dompdf/DOMPDF.html
     // Codi Font --> https://github.com/dompdf/dompdf
     //
@@ -11,7 +13,7 @@
     $dompdf = new Dompdf();
     // 
     // Carregant el contigngut del document HTML 
-    $html = file_get_contents("index.html"); 
+    $html = $_SESSION["PDF"]; 
     $dompdf->loadHtml($html);  // Alternativa -->  $dompdf->loadHtml('<h1>Conversor d'HTML a PDF</h1>'); 
     //
     // Renderitzant i mostrant el PDF
