@@ -118,11 +118,13 @@ if (!isset($_SESSION["nom"])) {
         $fitxer_usuaris = "../../datos/usuarisdades";
         $fp = fopen($fitxer_usuaris, "r") or die("No s'han pogut validar els llibres");
 
-        $printdeechos = "";
+        $printdeechos = "";//esto
 
         if ($fp) {
             $mida_fitxer = filesize($fitxer_usuaris);
             $usuaris = explode(PHP_EOL, fread($fp, $mida_fitxer));
+
+            //mover la tabla de arriba e iniciar printdeechos
 
             $printdeechos = "<table>
                 <br><br><hr style=\"float:left; width:78.5%\"><br>
@@ -162,16 +164,16 @@ if (!isset($_SESSION["nom"])) {
         }
         
         fclose($fitxer);
-        echo $printdeechos;
+        echo $printdeechos;//esto
 
-        $_SESSION["PDF"] = $printdeechos;
+        $_SESSION["PDF"] = $printdeechos; //esto
 
         ?>
 
 
     </table>
-    <br><br><hr><br>
-    <a href= "/dompdf/html2pdf.php"><button  >Crear PDF</button></a>
+    <br><br><hr><br><!--esto-->
+    <a href= "/dompdf/html2pdf.php"><button  >Crear PDF</button></a> <!--esto-->
 </body>
 
 </html>
