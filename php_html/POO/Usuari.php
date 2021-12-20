@@ -98,7 +98,7 @@
 
         public function __toString()
         {
-            return "<b>Llibre creat</b> <br>" . "Nom: ". $this->nom . "<br> Cognom: " . $this->cognom . "<br> Adreça Electrònica: " . $this->adrecaElec .
+            return "<b>Usuari creat</b> <br>" . "Nom: ". $this->nom . "<br> Cognom: " . $this->cognom . "<br> Adreça Electrònica: " . $this->adrecaElec .
             "<br> Telèfon: " . $this->tel . "<br> Contrassenya: " . $this->contrasenya . 
             "<br> ID del usuari: " . $this->idUsuari . "<br> Llibre Prestat: " . $this->llibrePrestec . 
             "<br> Data Inici del Prèstec: " . $this->dataIniciPrestec . "<br> ISBN del llibre prestat: " . $this->isbnPrestec;

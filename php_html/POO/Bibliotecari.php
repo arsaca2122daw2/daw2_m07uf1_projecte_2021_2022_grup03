@@ -104,7 +104,7 @@
         //metodes pagina
             //llibres
         public function __toString(){
-            return "<b>Llibre creat</b> <br>" . "Nom: ". $this->nom . "<br> Cognom: " . $this->cognom . "<br> Adreça Electrònica: " . $this->adrecaElec .
+            return "<b>Bibliotecari creat</b> <br>" . "Nom: ". $this->nom . "<br> Cognom: " . $this->cognom . "<br> Adreça Electrònica: " . $this->adrecaElec .
             "<br> Telèfon: " . $this->tel . "<br> Contrassenya: " . $this->contrasenya . 
             "<br> ID del bibliotecari: " . $this->idBiblotecari . "<br> Número Seguretat Social: " . $this->numSS . 
             "<br> Data Inici del Treball: " . $this->dataIniciTreball . "<br> Salari: " . 

@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION["nom"])) {
+    header("Location: login.html");
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,17 +23,18 @@ session_start();
         <hr>
     </div>
     <div>
-        <a href="../../roles/bibliotecari.php"><input type="button" Value="<-- Enrere" /></a><br><br>
+        <a href="../../../eines/einesLlibresBC.php"><input type="button" Value="<-- Enrere" /></a><br><br>
     </div>
     <div class="dadesUsuari">
         Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom']; ?>">
         <br><br>
-        Vosté és:<input id="funcio" value="<?php echo "Bibliotecari" ?>">
+        Vosté és:<input id="funcio" value="<?php echo $_SESSION['rol'] ?>">
         <br><br>
         Codi Sessió:<input id="funcio" value="<?php echo session_id(); ?>">
-        <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../../inicio/logout.php'" />
+        <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../../../inicio/logout.php'" />
     </div>
     <div>
+        <h4>Crear Llibre</h4>
         <form action="crearLlibre.php" method="POST">
             Títol: <input type="text" name="titol"><br><br>
             Autor: <input type="text" name="autor"><br><br>
@@ -42,27 +46,34 @@ session_start();
         </form>
         <?php
 
-            include "../../POO/Llibre.php";
+        include "../../../POO/Llibre.php";
 
-            $nouLlibre = new Llibre($_POST['titol'],$_POST['autor'],$_POST['ISBN'],$_POST['prestat'],$_POST['inici'],$_POST['ID']);
-            
-            echo $nouLlibre;
-            $fitxer_usuaris = "../../datos/llibres";
-            $fp = fopen($fitxer_usuaris, "a") or die("<br>No s'ha pogut validar l'usuari");
+        $nouLlibre = new Llibre($_POST['titol'], $_POST['autor'], $_POST['ISBN'], $_POST['prestat'], $_POST['inici'], $_POST['ID']);
 
-            fwrite($fp, "" . PHP_EOL);
-            fwrite($fp, $nouLlibre->gettitol());
-            fwrite($fp, ":");
-            fwrite($fp, $nouLlibre->getautor());
-            fwrite($fp, ":");
-            fwrite($fp, $nouLlibre->getisbn());
-            fwrite($fp, ":");
-            fwrite($fp, $nouLlibre->getllibrePrestec());
+        echo $nouLlibre;
+        $fitxer_usuaris = "../../../datos/llibres";
+        $fp = fopen($fitxer_usuaris, "a") or die("<br>No s'ha pogut validar l'usuari");
+
+        fwrite($fp, "" . PHP_EOL);
+        fwrite($fp, $nouLlibre->gettitol());
+        fwrite($fp, ":");
+        fwrite($fp, $nouLlibre->getautor());
+        fwrite($fp, ":");
+        fwrite($fp, $nouLlibre->getisbn());
+        fwrite($fp, ":");
+        fwrite($fp, $nouLlibre->getllibrePrestec());
+        if ($_POST['prestat'] == "Si" || $_POST['prestat'] == "si") {
             fwrite($fp, ":");
             fwrite($fp, $nouLlibre->getdataIniciPrestec());
             fwrite($fp, ":");
             fwrite($fp, $nouLlibre->getcodiUsuPrestec());
-            fclose($fp);
+        } else if ($_POST['prestat'] == "no" || $_POST['prestat'] == "No") {
+            fwrite($fp, ":");
+            fwrite($fp, "0");
+            fwrite($fp, ":");
+            fwrite($fp, "0");
+        }
+        fclose($fp);
         ?>
     </div>
 </body>

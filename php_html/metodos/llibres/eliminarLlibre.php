@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION["nom"])) {
+    header("Location: login.html");
+}
 include "../../POO/Llibre.php";
 ?>
 
@@ -21,12 +24,12 @@ include "../../POO/Llibre.php";
         <hr>
     </div>
     <div>
-        <a href="../../roles/bibliotecari.php"><input type="button" Value="<-- Enrere" /></a><br><br>
+        <a href="../../eines/einesLlibres.php"><input type="button" Value="<-- Enrere" /></a><br><br>
     </div>
     <div class="dadesUsuari">
         Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom']; ?>">
         <br><br>
-        Vosté és:<input id="funcio" value="<?php echo "Bibliotecari" ?>">
+        Vosté és:<input id="funcio" value="<?php echo $_SESSION['rol'] ?>">
         <br><br>
         Codi Sessió:<input id="funcio" value="<?php echo session_id(); ?>">
         <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../../inicio/logout.php'" />
@@ -34,13 +37,32 @@ include "../../POO/Llibre.php";
     <div>
         <form action="eliminarLlibre.php" method="POST">
             Introdueixi l' ISBN del llibre a eliminar: <input type="text" name="ISBN"><br><br><br><br>
-            <input type="hidden" name="_method" value="DELETE"/>
-            <input type="submit" value="Crear"></input><br><br>
+            <input type="hidden" name="_method" value="DELETE" />
+            <input type="submit" value="Eliminar"></input><br><br>
         </form>
         <?php
-            if ($_POST["_method"]=="DELETE"){
-                echo"hola";    
+
+        if ($_POST["_method"] == "DELETE") {
+
+            $fitxer_llibre = "../../datos/llibres";
+            $fp = fopen($fitxer_llibre, "a+") or die("No s'ha pogut validar l'usuari");
+            
+            if ($fp) {
+                $mida_fitxer = filesize($fitxer_llibre);
+                $llibres = explode(PHP_EOL, fread($fp, $mida_fitxer));
+
+                foreach ($llibres as $index => $llibre) {
+                    $logpwd = explode(":", $llibre);
+
+                    if ($logpwd[2] == $_POST['ISBN']) {
+
+                        $copia = file($fitxer_llibre);
+                        unset($copia[$index]);
+                        file_put_contents($fitxer_llibre, implode("", $copia));
+                    }
+                }
             }
+        }
         ?>
     </div>
 </body>

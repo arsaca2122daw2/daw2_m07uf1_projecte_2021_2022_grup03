@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION["nom"])) {
+    header("Location: login.html");
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,12 +22,12 @@ session_start();
         <hr>
     </div>
     <div>
-        <a href="../../roles/usuari.php"><input  type="button" Value="<-- Enrere"/></a><br><br>
+        <a href="../../roles/usuari.php"><input type="button" Value="<-- Enrere" /></a><br><br>
     </div>
     <div class="dadesUsuari">
         Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom']; ?>">
         <br><br>
-        Vosté és:<input id="funcio" value="<?php echo "Bibliotecari" ?>">
+        Vosté és:<input id="funcio" value="<?php echo $_SESSION['rol'] ?>">
         <br><br>
         Codi Sessió:<input id="funcio" value="<?php echo session_id(); ?>">
         <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../../inicio/logout.php'" />
@@ -49,7 +52,7 @@ session_start();
             $mida_fitxer = filesize($fitxer_llibres);
             $llibres = explode(PHP_EOL, fread($fp, $mida_fitxer));
 
-
+            $dompdf_temp = "";
 
             foreach ($llibres as $llibre) {
                 $logpwd = explode(":", $llibre);

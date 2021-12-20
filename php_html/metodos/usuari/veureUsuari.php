@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION["nom"])) {
+    header("Location: login.html");
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +23,17 @@ session_start();
         <hr>
     </div>
     <div>
-        <a href="../../eines/einesUsuaris.php"><input  type="button" Value="<-- Enrere"/></a><br><br>
+        <a href="../../eines/einesUsuaris.php"><input type="button" Value="<-- Enrere" /></a><br><br>
     </div>
     <div class="dadesUsuari">
         Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom']; ?>">
         <br><br>
-        Vosté és:<input id="funcio" value="<?php echo "Bibliotecari" ?>">
+        Vosté és:<input id="funcio" value="<?php echo $_SESSION['rol'] ?>">
         <br><br>
         Codi Sessió:<input id="funcio" value="<?php echo session_id(); ?>">
         <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../../inicio/logout.php'" />
     </div>
+    <h4>Cerca Usuari</h4>
     <div>
         <form action="veureUsuari.php" method="POST">
             Introdueix el codi d'usuari a Cercar:
@@ -50,7 +54,7 @@ session_start();
         foreach ($usuaris as $usuari) {
             $logpwd = explode(":", $usuari);
 
-            if (($logpwd[4] == $_POST['codiUsuari']) && ($logpwd[9] == 'usuari')){ //CONDICION CON LA COOKIE COGER EL ID DEL USUARIO;
+            if (($logpwd[5] == $_POST['codiUsuari']) && ($logpwd[9] == 'usuari')) { //CONDICION CON LA COOKIE COGER EL ID DEL USUARIO;
 
                 $zero = $logpwd[0];
                 $u = $logpwd[1];
@@ -103,14 +107,63 @@ session_start();
 
                 fclose($fitxer);
                 break;
-            }else{
-
+            } else {
             }
-        
-            
         }
     }
     ?>
+        <table>
+        <br><br><hr style="float:left; width:78.5%"><br>
+        <h4>Tots els Usuaris</h4>
+        <tr>
+            <td><b>Nom</td>
+            <td><b>Direcció</td>
+            <td><b>Adreça Electrònica</td>
+            <td><b>Tele</td>
+            <td><b>Contrasenya</td>
+            <td><b>ID usuari</td>
+            <td><b>Llibre prestat</td>
+            <td><b>Data Inici Prèstec</td>
+            <td><b>ISBN del llibre prestat</td>
+
+        </tr>
+        <?php
+
+        $fitxer_usuaris = "../../datos/usuarisdades";
+        $fp = fopen($fitxer_usuaris, "r") or die("No s'han pogut validar els llibres");
+
+        if ($fp) {
+            $mida_fitxer = filesize($fitxer_usuaris);
+            $usuaris = explode(PHP_EOL, fread($fp, $mida_fitxer));
+
+            foreach ($usuaris as $usuari) {
+                $logpwd = explode(":", $usuari);
+                
+                if($logpwd[9] == "usuari"){
+                    
+
+                    echo "";
+                    echo "<tr>";
+                    echo "<td> $logpwd[0] </td>";
+                    echo "<td> $logpwd[1] </td>";
+                    echo "<td> $logpwd[2] </td>";
+                    echo "<td> $logpwd[3] </td>";
+                    echo "<td> $logpwd[4] </td>";
+                    echo "<td> $logpwd[5] </td>";
+                    echo "<td> $logpwd[6] </td>";
+                    echo "<td> $logpwd[7] </td>";
+                    echo "<td> $logpwd[8] </td>";
+                    echo "</tr>";
+                }
+            }
+        }
+
+        fclose($fitxer);
+
+        ?>
+    </table>
+    <br><br><hr><br>
+    <button>Crear PDF</button>
 </body>
 
 </html>

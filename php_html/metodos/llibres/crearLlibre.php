@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION["nom"])) {
+    header("Location: login.html");
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +23,17 @@ session_start();
         <hr>
     </div>
     <div>
-        <a href="../../roles/bibliotecari.php"><input type="button" Value="<-- Enrere" /></a><br><br>
+        <a href="../../eines/einesLlibres.php"><input type="button" Value="<-- Enrere" /></a><br><br>
     </div>
     <div class="dadesUsuari">
         Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom']; ?>">
         <br><br>
-        Vosté és:<input id="funcio" value="<?php echo "Bibliotecari" ?>">
+        Vosté és:<input id="funcio" value="<?php echo $_SESSION['rol'] ?>">
         <br><br>
         Codi Sessió:<input id="funcio" value="<?php echo session_id(); ?>">
         <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../../inicio/logout.php'" />
     </div>
+    <h4>Crear Llibre</h4>
     <div>
         <form action="crearLlibre.php" method="POST">
             Títol: <input type="text" name="titol"><br><br>
@@ -38,14 +42,16 @@ session_start();
             Prestat/No Prestat: <input type="text" name="prestat"><br><br>
             Inici del prèstec: <input type="text" name="inici"><br><br>
             ID usuari del prèstec: <input type="text" name="ID"><br><br>
+            <input type="hidden" name="_method" value="POST" />
             <input type="submit" value="Crear"></input><br><br><br>
         </form>
         <?php
+        if ($_POST["_method"] == "POST") {
 
             include "../../POO/Llibre.php";
 
-            $nouLlibre = new Llibre($_POST['titol'],$_POST['autor'],$_POST['ISBN'],$_POST['prestat'],$_POST['inici'],$_POST['ID']);
-            
+            $nouLlibre = new Llibre($_POST['titol'], $_POST['autor'], $_POST['ISBN'], $_POST['prestat'], $_POST['inici'], $_POST['ID']);
+
             echo $nouLlibre;
             $fitxer_usuaris = "../../datos/llibres";
             $fp = fopen($fitxer_usuaris, "a") or die("<br>No s'ha pogut validar l'usuari");
@@ -58,11 +64,19 @@ session_start();
             fwrite($fp, $nouLlibre->getisbn());
             fwrite($fp, ":");
             fwrite($fp, $nouLlibre->getllibrePrestec());
-            fwrite($fp, ":");
-            fwrite($fp, $nouLlibre->getdataIniciPrestec());
-            fwrite($fp, ":");
-            fwrite($fp, $nouLlibre->getcodiUsuPrestec());
+            if ($_POST['prestat'] == "Si" || $_POST['prestat'] == "si") {
+                fwrite($fp, ":");
+                fwrite($fp, $nouLlibre->getdataIniciPrestec());
+                fwrite($fp, ":");
+                fwrite($fp, $nouLlibre->getcodiUsuPrestec());
+            } else if ($_POST['prestat'] == "no" || $_POST['prestat'] == "No") {
+                fwrite($fp, ":");
+                fwrite($fp, "0");
+                fwrite($fp, ":");
+                fwrite($fp, "0");
+            }
             fclose($fp);
+        }
         ?>
     </div>
 </body>

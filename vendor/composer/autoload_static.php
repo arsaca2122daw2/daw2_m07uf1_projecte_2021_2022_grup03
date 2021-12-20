@@ -4,12 +4,13 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit65453f8bb8cbcc5ff822c8bd83f5f380
+class ComposerStaticInit15c03273a431e95941219103396cb743
 {
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
             'Svg\\' => 4,
+            'Sabberworm\\CSS\\' => 15,
         ),
         'F' => 
         array (
@@ -26,6 +27,10 @@ class ComposerStaticInit65453f8bb8cbcc5ff822c8bd83f5f380
         array (
             0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',
         ),
+        'Sabberworm\\CSS\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
+        ),
         'FontLib\\' => 
         array (
             0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
@@ -33,16 +38,6 @@ class ComposerStaticInit65453f8bb8cbcc5ff822c8bd83f5f380
         'Dompdf\\' => 
         array (
             0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
-        ),
-    );
-
-    public static $prefixesPsr0 = array (
-        'S' => 
-        array (
-            'Sabberworm\\CSS' => 
-            array (
-                0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/lib',
-            ),
         ),
     );
 
@@ -59,10 +54,9 @@ class ComposerStaticInit65453f8bb8cbcc5ff822c8bd83f5f380
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit65453f8bb8cbcc5ff822c8bd83f5f380::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit65453f8bb8cbcc5ff822c8bd83f5f380::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit65453f8bb8cbcc5ff822c8bd83f5f380::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit65453f8bb8cbcc5ff822c8bd83f5f380::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit15c03273a431e95941219103396cb743::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit15c03273a431e95941219103396cb743::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit15c03273a431e95941219103396cb743::$classMap;
 
         }, null, ClassLoader::class);
     }

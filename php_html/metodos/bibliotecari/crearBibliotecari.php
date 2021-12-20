@@ -3,6 +3,9 @@
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
 session_start();
+if(!isset($_SESSION["nom"])){
+        header("Location: login.html");
+}
 include_once "../../POO/Bibliotecari.php";
 include_once "../../POO/BibliotecariCap.php";
 ?>
@@ -14,7 +17,7 @@ include_once "../../POO/BibliotecariCap.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualitzacio Llibres</title>
+    <title>Crear Bibliotecari</title>
     <link rel="stylesheet" type="text/css" href="css/estilsVeureBibliotecari.php">
 </head>
 
@@ -24,16 +27,17 @@ include_once "../../POO/BibliotecariCap.php";
         <hr>
     </div>
     <div>
-        <a href="../../roles/bibliotecari.php"><input type="button" Value="<-- Enrere" /></a><br><br>
+        <a href="../../eines/einesBibliotecaris.php"><input type="button" Value="<-- Enrere" /></a><br><br>
     </div>
     <div class="dadesUsuari">
         Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom']; ?>">
         <br><br>
-        Vosté és:<input id="funcio" value="<?php echo "Bibliotecari" ?>">
+        Vosté és:<input id="funcio" value="<?php echo $_SESSION['rol']?>">
         <br><br>
         Codi Sessió:<input id="funcio" value="<?php echo session_id(); ?>">
         <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../../inicio/logout.php'" />
     </div>
+    <h4>Crear Bibliotecari</h4>
     <div>
         <form action="crearBibliotecari.php" method="POST">
             Nom: <input type="text" name="nom"><br><br>
@@ -68,28 +72,28 @@ include_once "../../POO/BibliotecariCap.php";
 
                 echo $nouBilbiotecariCap;
                 $fitxer_usuaris = "../../datos/usuarisdades";
-                $fp = fopen($fitxer_usuaris, "a") or die("<br>No s'ha pogut crear l'usuari");
+                $fp = fopen($fitxer_usuaris, "a") or die("<br>No s'ha pogut crear el bibliotecari");
 
                 fwrite($fp, "" . PHP_EOL);
-                fwrite($fp, $nouUsuari->getnom());
+                fwrite($fp, $nouBilbiotecariCap->getnom());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getcognom());
+                fwrite($fp, $nouBilbiotecariCap->getcognom());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getadrecaElec());
+                fwrite($fp, $nouBilbiotecariCap->getadrecaElec());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->gettel());
+                fwrite($fp, $nouBilbiotecariCap->gettel());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getcontrasenya());
+                fwrite($fp, $nouBilbiotecariCap->getcontrasenya());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getidBiblotecari());
+                fwrite($fp, $nouBilbiotecariCap->getidBiblotecari());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getnumSS());
+                fwrite($fp, $nouBilbiotecariCap->getnumSS());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getdataIniciTreball());
+                fwrite($fp, $nouBilbiotecariCap->getdataIniciTreball());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getsalari());
+                fwrite($fp, $nouBilbiotecariCap->getsalari());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getcap());
+                fwrite($fp, $nouBilbiotecariCap->getcap());
                 fwrite($fp, ":");
                 fwrite($fp, "bibliotecariCap");
                 fwrite($fp, ":");
@@ -101,34 +105,35 @@ include_once "../../POO/BibliotecariCap.php";
 
                 echo $nouBilbiotecari;
                 $fitxer_usuaris = "../../datos/usuarisdades";
-                $fp = fopen($fitxer_usuaris, "a") or die("<br>No s'ha pogut crear l'usuari");
+                $fp = fopen($fitxer_usuaris, "a") or die("<br>No s'ha pogut crear el bibliotecari");
 
                 fwrite($fp, "" . PHP_EOL);
-                fwrite($fp, $nouUsuari->getnom());
+                fwrite($fp, $nouBilbiotecari->getnom());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getcognom());
+                fwrite($fp, $nouBilbiotecari->getcognom());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getadrecaElec());
+                fwrite($fp, $nouBilbiotecari->getadrecaElec());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->gettel());
+                fwrite($fp, $nouBilbiotecari->gettel());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getcontrasenya());
+                fwrite($fp, $nouBilbiotecari->getcontrasenya());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getidBiblotecari());
+                fwrite($fp, $nouBilbiotecari->getidBiblotecari());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getnumSS());
+                fwrite($fp, $nouBilbiotecari->getnumSS());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getdataIniciTreball());
+                fwrite($fp, $nouBilbiotecari->getdataIniciTreball());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getsalari());
+                fwrite($fp, $nouBilbiotecari->getsalari());
                 fwrite($fp, ":");
-                fwrite($fp, $nouUsuari->getcap());
+                fwrite($fp, $nouBilbiotecari->getcap());
                 fwrite($fp, ":");
                 fwrite($fp, "bibliotecari");
                 fwrite($fp, ":");
                 fwrite($fp, "bibliotecari");
                 fwrite($fp, ":");
             }
+            fclose($fp);
         }
 
 

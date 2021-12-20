@@ -1,5 +1,8 @@
 <?php
-session_start();
+    session_start();
+    if(!isset($_SESSION["nom"])){
+            header("Location: login.html");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +27,7 @@ session_start();
     <div class="dadesUsuari">
         Usuari:<input id="UsuariObert" value="<?php echo $_SESSION['nom'];?>">
         <br><br>
-        Vosté és:<input id="funcio" value="<?php echo "Bibliotecari Cap"?>">
+        Vosté és:<input id="funcio" value="<?php echo $_SESSION['rol']?>">
         <br><br>
         Codi Sessió:<input id="funcio" value="<?php echo session_id();?>">
         <input id="tancaSessio" type="submit" value="Log Out" onclick="location='../inicio/logout.php'"/>
