@@ -96,53 +96,55 @@ if (!isset($_SESSION["nom"])) {
         }
     }
     ?>
-    <table>
-        <br><br><hr style="float:left; width:78.5%"><br>
-        <h4>Tots els llibres</h4>
-        <tr>
-            <td><b>Títol</td>
-            <td><b>Autor</td>
-            <td><b>ISBN</td>
-            <td><b>Llibre en Préstec</td>
-            <td><b>Inici del préstec</td>
-            <td><b>Codi Usuari amb el préstec</td>
-
-        </tr>
+    
         <?php
 
         $fitxer_llibres = "../../datos/llibres";
         $fp = fopen($fitxer_llibres, "r") or die("No s'han pogut validar els llibres");
 
+        $printdeechos = "";
+
         if ($fp) {
             $mida_fitxer = filesize($fitxer_llibres);
             $llibres = explode(PHP_EOL, fread($fp, $mida_fitxer));
 
-            $dompdf_temp = "";
+            $printdeechos = "<table>
+            <br><br><hr style=\"float:left; width:78.5%\"><br>
+            <h4>Tots els llibres</h4>
+            <tr>
+                <td><b>Títol</td>
+                <td><b>Autor</td>
+                <td><b>ISBN</td>
+                <td><b>Llibre en Préstec</td>
+                <td><b>Inici del préstec</td>
+                <td><b>Codi Usuari amb el préstec</td>
+    
+            </tr>";
 
             foreach ($llibres as $llibre) {
                 $logpwd = explode(":", $llibre);
 
-                echo "";
-                echo "<tr>";
-                echo "<td> $logpwd[0] </td>";
-                echo "<td> $logpwd[1] </td>";
-                echo "<td> $logpwd[2] </td>";
-                echo "<td> $logpwd[3] </td>";
-                echo "<td> $logpwd[4] </td>";
-                echo "<td> $logpwd[5] </td>";
-                echo "</tr>";
+                $printdeechos .= "<tr>";
+                $printdeechos .= "<td> $logpwd[0] </td>";
+                $printdeechos .= "<td> $logpwd[1] </td>";
+                $printdeechos .= "<td> $logpwd[2] </td>";
+                $printdeechos .= "<td> $logpwd[3] </td>";
+                $printdeechos .= "<td> $logpwd[4] </td>";
+                $printdeechos .= "<td> $logpwd[5] </td>";
+                $printdeechos .= "</tr>";
             }
         }
 
         fclose($fitxer);
+        echo $printdeechos;
+
+        $_SESSION["PDF"] = $printdeechos;
 
         ?>
+
     </table>
     <br><br><hr><br>
-    <form action="crearPDFLibros.php"> 
-        <input type="submit" value="Cercar">
-    </form>
-    
+    <a target="_blank" href= "/dompdf/html2pdf.php"><button >Crear PDF</button></a>
 </body>
 
 </html>

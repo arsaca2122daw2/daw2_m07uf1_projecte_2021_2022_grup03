@@ -113,29 +113,34 @@ if (!isset($_SESSION["nom"])) {
         }
     }
     ?>
-        <table>
-        <br><br><hr style="float:left; width:78.5%"><br>
-        <h4>Tots els Usuaris</h4>
-        <tr>
-            <td>Nom</td>
-            <td>Cognom</td>
-            <td>Adreça Electrònica</td>
-            <td>Tele</td>
-            <td>Contrasenya</td>
-            <td>ID usuari</td>
-            <td>Llibre prestat</td>
-            <td>Data Inici Prèstec</td>
-            <td>ISBN del llibre prestat</td>
-
-        </tr>
+        
         <?php
 
         $fitxer_usuaris = "../../../datos/usuarisdades";
         $fp = fopen($fitxer_usuaris, "r") or die("No s'han pogut validar els llibres");
 
+        $printdeechos = "";
+
         if ($fp) {
             $mida_fitxer = filesize($fitxer_usuaris);
             $usuaris = explode(PHP_EOL, fread($fp, $mida_fitxer));
+
+
+            $printdeechos = "<table>
+                <br><br><hr style=\"float:left; width:78.5%\"><br>
+                <h4>Tots els Usuaris</h4>
+                <tr>
+                    <td><b>Nom</td>
+                    <td><b>Cognom</td>
+                    <td><b>Adreça electrònica</td>
+                    <td><b>Telefon</td>
+                    <td><b>Contrasenya</td>
+                    <td><b>ID usuari</td>
+                    <td><b>Llibre prestat</td>
+                    <td><b>Data Inici Prèstec</td>
+                    <td><b>ISBN del llibre prestat</td>
+
+                </tr>";
 
             foreach ($usuaris as $usuari) {
                 $logpwd = explode(":", $usuari);
@@ -143,28 +148,32 @@ if (!isset($_SESSION["nom"])) {
                 if($logpwd[9] == "usuari"){
                     
 
-                    echo "";
-                    echo "<tr>";
-                    echo "<td> $logpwd[0] </td>";
-                    echo "<td> $logpwd[1] </td>";
-                    echo "<td> $logpwd[2] </td>";
-                    echo "<td> $logpwd[3] </td>";
-                    echo "<td> $logpwd[4] </td>";
-                    echo "<td> $logpwd[5] </td>";
-                    echo "<td> $logpwd[6] </td>";
-                    echo "<td> $logpwd[7] </td>";
-                    echo "<td> $logpwd[8] </td>";
-                    echo "</tr>";
+                    $printdeechos .= "<tr>";
+                    $printdeechos .= "<td> $logpwd[0] </td>";
+                    $printdeechos .= "<td> $logpwd[1] </td>";
+                    $printdeechos .= "<td> $logpwd[2] </td>";
+                    $printdeechos .= "<td> $logpwd[3] </td>";
+                    $printdeechos .= "<td> $logpwd[4] </td>";
+                    $printdeechos .= "<td> $logpwd[5] </td>";
+                    $printdeechos .= "<td> $logpwd[6] </td>";
+                    $printdeechos .= "<td> $logpwd[7] </td>";
+                    $printdeechos .= "<td> $logpwd[8] </td>";
+                    $printdeechos .= "</tr>";
                 }
             }
         }
-
+        
         fclose($fitxer);
+        echo $printdeechos;
+
+        $_SESSION["PDF"] = $printdeechos;
 
         ?>
+
+
     </table>
     <br><br><hr><br>
-    <button>Crear PDF</button>
+    <a target="_blank" href= "/dompdf/html2pdf.php"><button  >Crear PDF</button></a>
 </body>
 
 </html>
