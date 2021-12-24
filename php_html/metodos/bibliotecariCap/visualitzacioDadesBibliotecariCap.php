@@ -2,8 +2,7 @@
 
 session_start();
 if(!isset($_SESSION["nom"])){
-        header("Location: login.html");
-}
+    header("Location: ../../inicio/aviso.php");}
 $fitxer_usuarisdades = "../../datos/usuarisdades";
 $fp = fopen($fitxer_usuarisdades, "r") or die("No s'ha pogut validar l'usuari");
 

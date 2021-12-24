@@ -1,8 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["nom"])) {
-    header("Location: login.html");
-}
+    header("Location: ../../../inicio/aviso.php");}
 include "../../POO/Llibre.php";
 ?>
 

@@ -4,8 +4,7 @@
 //error_reporting(E_ALL);
 session_start();
 if (!isset($_SESSION["nom"])) {
-    header("Location: login.html");
-}
+    header("Location: ../../inicio/aviso.php");}
 include_once "../../POO/Bibliotecari.php";
 include_once "../../POO/BibliotecariCap.php";
 ?>
