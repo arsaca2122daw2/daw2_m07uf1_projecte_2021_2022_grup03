@@ -135,7 +135,6 @@ include_once "../../POO/BibliotecariCap.php";
             }
         }
 
-
     ?>
     </div>
 </body>

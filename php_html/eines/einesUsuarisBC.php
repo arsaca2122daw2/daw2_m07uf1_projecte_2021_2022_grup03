@@ -17,7 +17,6 @@
 <body>
     <div>
         <h1 style="text-align: center;">Biblioteca Terra Alta</h1>
-        
         <hr>
     </div>
     <div>

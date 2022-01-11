@@ -22,7 +22,7 @@ if ($fp) {
             fclose($fitxer);
             session_unset();
             session_start();
-            $_SESSION['nom'] = $_POST['usuari'];
+            $S_SESSION['nom'] = $_POST['usuari'];
             $_SESSION['rol'] = "Usuari";
             $_SESSION['codiSesion'] = $nombre + $role + session_id();
 
